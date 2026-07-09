@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orden — The Open Loan Ledger</title>
+  <meta name="description" content="Orden is a peer-to-peer lending marketplace where borrowers and lenders meet, negotiate terms, and fund loans directly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Spline+Sans+Mono:wght@300..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="assets/orden-logo.png" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ MASTHEAD ============ -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="wordmark" href="#/">
+        <span class="wordmark-o">O</span>rden
+      </a>
+      <nav class="masthead-nav">
+        <a href="#how" class="nav-link nav-landing">How it works</a>
+        <a href="#/market" class="nav-link nav-app" data-route="market">The Book</a>
+        <a href="#/ledger" class="nav-link nav-app" data-route="ledger">My Ledger</a>
+      </nav>
+      <div class="masthead-right">
+        <a href="#/login" class="btn btn-ink btn-signin nav-landing">Sign in</a>
+        <button class="bell nav-app" id="bellBtn" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+          <span class="bell-dot" id="bellDot" hidden></span>
+        </button>
+        <button class="user-chip nav-app" id="userChip" title="My Ledger">
+          <span class="user-avatar">JD</span>
+          <span class="user-name">Jordan&nbsp;Demo</span>
+        </button>
+      </div>
+    </div>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       VIEW: LANDING
+       ================================================================ -->
+  <div id="view-landing">
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <p class="hero-kicker reveal">EST. 2025 · PEER-TO-PEER CREDIT</p>
+        <h1 class="hero-title">
+          <span class="reveal d1">The open ledger where</span>
+          <span class="reveal d2"><em>borrowers</em> &amp; <em>lenders</em></span>
+          <span class="reveal d3">write their own terms.</span>
+        </h1>
+        <p class="hero-sub reveal d4">
+          Post a loan. Field the counter-offers. Fund it on a handshake —
+          no bank in the middle, every term negotiated in the open.
+        </p>
+        <div class="hero-cta reveal d5">
+          <a href="#/login" class="btn btn-ink">Enter the market</a>
+          <span class="demo-stamp">Demo&nbsp;·&nbsp;sample&nbsp;data</span>
+        </div>
+      </div>
+      <div class="hero-stats reveal d6">
+        <div class="stat">
+          <span class="stat-value mono" id="statVolume">$0</span>
+          <span class="stat-label">On the book</span>
+        </div>
+        <div class="stat-rule"></div>
+        <div class="stat">
+          <span class="stat-value mono" id="statOpen">0</span>
+          <span class="stat-label">Open listings</span>
+        </div>
+        <div class="stat-rule"></div>
+        <div class="stat">
+          <span class="stat-value mono" id="statRate">0%</span>
+          <span class="stat-label">Median rate</span>
+        </div>
+        <div class="stat-rule"></div>
+        <div class="stat">
+          <span class="stat-value mono" id="statFunded">0</span>
+          <span class="stat-label">Loans funded</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <div class="how-inner">
+        <div class="how-step">
+          <div class="how-step-head">
+            <span class="how-num">01</span>
+            <img class="how-icon" src="assets/borrow.svg" alt="" />
+          </div>
+          <h3>List your side</h3>
+          <p>Borrowing or lending — set principal, rate, term and cadence, then post it to the open book.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-head">
+            <span class="how-num">02</span>
+            <img class="how-icon" src="assets/calculate-cost.svg" alt="" />
+          </div>
+          <h3>Negotiate in the open</h3>
+          <p>The other side counters your terms. Haggle the rate, stretch the term, meet in the middle.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-head">
+            <span class="how-num">03</span>
+            <img class="how-icon" src="assets/payback.svg" alt="" />
+          </div>
+          <h3>Fund on agreement</h3>
+          <p>Accept the counter and the deal is struck — tracked from funding through final repayment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-cta">
+      <h2 class="landing-cta-title">Ready to write your own terms?</h2>
+      <a href="#/login" class="btn btn-ink">Enter the market</a>
+      <p class="landing-credit">Orden is a demonstration product by <a href="https://techzad.ca" target="_blank" rel="noopener">Techzad&nbsp;Inc.</a> All listings are simulated.</p>
+    </section>
+  </div>
+
+  <!-- ================================================================
+       VIEW: LOGIN
+       ================================================================ -->
+  <div id="view-login" hidden>
+    <div class="login-wrap">
+      <div class="login-card">
+        <img class="login-logo" src="assets/orden-logo.png" alt="Orden" />
+        <p class="hero-kicker">MEMBERS' ENTRANCE</p>
+        <h2 class="login-title">The ledger is open.</h2>
+        <form id="loginForm" novalidate>
+          <label class="field">
+            <span class="field-label">Username</span>
+            <input class="text-input" id="loginUser" autocomplete="username" placeholder="admin" />
+          </label>
+          <label class="field">
+            <span class="field-label">Password</span>
+            <input type="password" class="text-input" id="loginPass" autocomplete="current-password" placeholder="••••••••" />
+          </label>
+          <p class="login-error" id="loginError" hidden>That name isn't in the book — try <span class="mono">admin</span> / <span class="mono">password</span>.</p>
+          <button type="submit" class="btn btn-ink btn-block">Open the book</button>
+        </form>
+        <p class="login-hint mono">DEMO CREDENTIALS · admin / password</p>
+        <a class="login-back" href="#/">← Back to the front page</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       VIEW: APP (The Book + My Ledger)
+       ================================================================ -->
+  <div id="view-app" hidden>
+
+    <!-- ============ MARKET ============ -->
+    <main class="market" id="market">
+      <div class="market-head">
+        <div class="market-title-block">
+          <h2 class="market-title">The Book</h2>
+          <p class="market-date mono" id="marketDate"></p>
+        </div>
+        <button class="btn btn-ink" id="newListingBtn">+ New listing</button>
+      </div>
+
+      <div class="market-controls">
+        <div class="tabs" role="tablist" id="typeTabs">
+          <button class="tab active" data-type="ALL" role="tab">All</button>
+          <button class="tab" data-type="BORROWING" role="tab">Borrow requests</button>
+          <button class="tab" data-type="LENDING" role="tab">Lending offers</button>
+        </div>
+        <div class="filters">
+          <select id="purposeFilter" class="select">
+            <option value="ALL">All purposes</option>
+            <option value="PERSONAL">Personal</option>
+            <option value="BUSINESS">Business</option>
+            <option value="EDUCATION">Education</option>
+            <option value="MEDICAL">Medical</option>
+            <option value="DEBT_CONSOLIDATION">Debt consolidation</option>
+            <option value="HOME_IMPROVEMENT">Home improvement</option>
+            <option value="VEHICLE">Vehicle</option>
+            <option value="OTHER">Other</option>
+          </select>
+          <select id="statusFilter" class="select">
+            <option value="ACTIVE">Open &amp; negotiating</option>
+            <option value="ALL">All statuses</option>
+            <option value="OPEN">Open</option>
+            <option value="COUNTER">Counter pending</option>
+            <option value="FUNDED">Funded</option>
+            <option value="REPAID">Repaid</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="ledger-wrap">
+        <table class="ledger" id="ledgerTable">
+          <thead>
+            <tr>
+              <th class="col-id">Nº</th>
+              <th class="col-side">Side</th>
+              <th class="col-purpose">Purpose</th>
+              <th class="col-principal num">Principal</th>
+              <th class="col-rate num">Rate</th>
+              <th class="col-term num">Term</th>
+              <th class="col-payment num">Est. payment</th>
+              <th class="col-lister">Listed by</th>
+              <th class="col-status">Status</th>
+            </tr>
+          </thead>
+          <tbody id="ledgerBody"></tbody>
+        </table>
+        <p class="ledger-empty" id="ledgerEmpty" hidden>Nothing on the book matches those filters.</p>
+      </div>
+
+      <footer class="market-foot">
+        <p>Orden is a demonstration product by <a href="https://techzad.ca" target="_blank" rel="noopener">Techzad&nbsp;Inc.</a> All listings are simulated.</p>
+        <button class="reset-link" id="resetBtn">Reset demo data</button>
+      </footer>
+    </main>
+
+    <!-- ============ MY LEDGER ============ -->
+    <section class="ledger-page" id="myledger" hidden>
+      <div class="profile-band">
+        <div class="profile-id">
+          <span class="profile-avatar">JD</span>
+          <div>
+            <h2 class="market-title">Jordan Demo</h2>
+            <p class="market-date mono">MEMBER SINCE MARCH 2025 · <span class="verified">✓ VERIFIED</span></p>
+          </div>
+        </div>
+        <button class="btn btn-ghost" id="signOutBtn">Sign out</button>
+      </div>
+
+      <div class="ml-stats" id="mlStats"></div>
+
+      <p class="drawer-section-title ml-section">Your listings on the book</p>
+      <div class="ml-grid" id="mlListings"></div>
+
+      <p class="drawer-section-title ml-section">Your deals</p>
+      <div class="ml-grid" id="mlDeals"></div>
+    </section>
+  </div>
+
+  <!-- ============ DETAIL DRAWER ============ -->
+  <div class="drawer-scrim" id="drawerScrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <div>
+        <p class="drawer-eyebrow mono" id="drawerId"></p>
+        <h3 class="drawer-title" id="drawerTitle"></h3>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Close">×</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <!-- ============ NEW LISTING MODAL ============ -->
+  <div class="modal-scrim" id="modalScrim" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h3 id="modalTitle">Write a new listing</h3>
+        <button class="drawer-close" id="modalClose" aria-label="Close">×</button>
+      </div>
+      <form id="listingForm" class="listing-form">
+        <div class="side-toggle" id="sideToggle">
+          <button type="button" class="side-btn active" data-type="BORROWING">I want to <strong>borrow</strong></button>
+          <button type="button" class="side-btn" data-type="LENDING">I want to <strong>lend</strong></button>
+        </div>
+
+        <label class="field">
+          <span class="field-label">Principal <span class="mono field-echo" id="echoPrincipal">$10,000</span></span>
+          <input type="range" id="fPrincipal" min="500" max="100000" step="500" value="10000" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">Interest rate <span class="mono field-echo" id="echoRate">8.0% APR</span></span>
+          <input type="range" id="fRate" min="1" max="24" step="0.25" value="8" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">Term <span class="mono field-echo" id="echoTerm">36 months</span></span>
+          <input type="range" id="fTerm" min="3" max="120" step="3" value="36" />
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span class="field-label">Payment cadence</span>
+            <select id="fFreq" class="select select-block">
+              <option value="WEEKLY">Weekly</option>
+              <option value="MONTHLY" selected>Monthly</option>
+              <option value="QUARTERLY">Quarterly</option>
+              <option value="YEARLY">Yearly</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Purpose</span>
+            <select id="fPurpose" class="select select-block">
+              <option value="PERSONAL">Personal</option>
+              <option value="BUSINESS">Business</option>
+              <option value="EDUCATION">Education</option>
+              <option value="MEDICAL">Medical</option>
+              <option value="DEBT_CONSOLIDATION">Debt consolidation</option>
+              <option value="HOME_IMPROVEMENT">Home improvement</option>
+              <option value="VEHICLE">Vehicle</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="payment-preview">
+          <span>Estimated payment</span>
+          <span class="mono payment-figure" id="previewPayment">—</span>
+        </div>
+
+        <button type="submit" class="btn btn-ink btn-block" id="submitListing">Post to the book</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ NOTIFICATIONS ============ -->
+  <div class="notif-panel" id="notifPanel" hidden>
+    <div class="notif-head">
+      <span>Notifications</span>
+      <button class="reset-link" id="notifClear">Mark all read</button>
+    </div>
+    <ul class="notif-list" id="notifList"></ul>
+  </div>
+
+  <!-- ============ TOASTS ============ -->
+  <div class="toasts" id="toasts"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
