@@ -138,7 +138,7 @@ body:not(.authed) .btn-signin {
   color: var(--ink);
   text-decoration: none;
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
 }
 
 .wordmark-o {
@@ -151,10 +151,10 @@ body:not(.authed) .btn-signin {
   background: var(--ink);
   color: var(--paper);
   font-size: 0.75em;
-  transform: translateY(0.18em);
+  line-height: 1;
   transition: transform 0.4s var(--ease-out), background 0.35s, color 0.35s, box-shadow 0.35s;
 }
-.wordmark:hover .wordmark-o { transform: translateY(0.18em) rotate(360deg); }
+.wordmark:hover .wordmark-o { transform: rotate(360deg); }
 
 /* On the dark views: outlined ring with a white O for legibility */
 body:not(.authed) .wordmark-o {
