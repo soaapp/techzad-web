@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="antialiased scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Techzad — Studio</title>
+<meta content="Techzad Inc. A small Canadian technology studio." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['IBM Plex Sans', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'monospace'],
+          },
+          colors: {
+            ink: '#171A19',
+            paper: '#F2EFE7',
+            accent: '#C29A4D',
+            surface: {
+              800: '#2A2D2C',
+              900: '#222524',
+              950: '#1C1F1E',
+            },
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body { background-color: #171A19; color: #F2EFE7; }
+    .thin-rule { border-color: #2A2D2C; }
+    .text-muted { color: #A0A5A3; }
+  </style>
+</head>
+<body class="font-sans min-h-screen relative p-6 md:p-12 lg:p-16 flex flex-col max-w-7xl mx-auto text-lg">
+<!-- Header -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b thin-rule pb-6 mb-16">
+<a aria-label="Techzad home" class="inline-flex items-center justify-center w-11 h-11 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-4 focus:ring-offset-[#171A19]" href="/">
+<img alt="" class="w-10 h-10" src="../../assets/techzad-mark.svg"/>
+</a>
+<nav class="flex flex-wrap items-center gap-6 font-sans text-base font-medium">
+<a class="hover:text-accent transition-colors text-paper" href="#work">Work</a>
+<a class="hover:text-accent transition-colors text-paper" href="#capabilities">Capabilities</a>
+<a class="hover:text-accent transition-colors text-paper" href="#about">About</a>
+<a class="text-ink bg-accent px-5 py-2.5 rounded-sm hover:opacity-90 transition-opacity font-semibold" href="mailto:hello@techzad.ca">Contact</a>
+</nav>
+</header>
+<!-- Hero Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-28">
+<!-- Main Intro -->
+<div class="lg:col-span-8 flex flex-col justify-center">
+<h1 class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.05] text-white">
+        Software, AI,<br/>
+        built carefully.
+      </h1>
+<p class="text-paper text-2xl md:text-3xl max-w-3xl leading-relaxed mb-10 font-light">
+        A small Canadian technology studio. We architect, build, and operate production software and infrastructure for engineering teams that value rigor and craft.
+      </p>
+<div class="flex flex-wrap gap-4 font-medium text-base">
+<a class="bg-accent text-ink px-8 py-4 rounded-sm hover:opacity-90 transition-opacity font-semibold" href="mailto:hello@techzad.ca">Start a conversation</a>
+<a class="border thin-rule px-8 py-4 rounded-sm hover:bg-surface-900 transition-colors text-paper" href="#methodology">View working model</a>
+</div>
+</div>
+<!-- Secondary Hero Area (Proof) -->
+<div class="lg:col-span-4 flex flex-col justify-end gap-6 pt-12 lg:pt-0 border-t lg:border-t-0 lg:border-l thin-rule lg:pl-12">
+<ul class="space-y-5 text-base text-paper font-light">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-accent">location_on</span>
+          Canada-based
+        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-accent">diversity_3</span>
+          Family-led
+        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-accent">sailing</span>
+          Ships own products
+        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-accent">security</span>
+          Privacy-first
+        </li>
+</ul>
+</div>
+</div>
+<!-- Capabilities Section -->
+<section class="mb-28" id="capabilities">
+<div class="flex items-baseline gap-4 mb-12 border-b thin-rule pb-4">
+<h2 class="text-4xl font-semibold tracking-tight text-white">Capabilities</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+<!-- Product Engineering -->
+<div>
+<h3 class="text-2xl font-medium mb-4 flex items-center gap-2 text-white">
+ Product Engineering
+        </h3>
+<p class="text-paper text-lg leading-relaxed mb-6 font-light">
+          Mobile and web products. APIs and integrations. Stabilization and scaling.
+        </p>
+<ul class="space-y-3 text-base text-muted font-medium">
+<li class="flex items-start gap-2"><span class="text-accent">—</span> Native &amp; Cross-platform Mobile</li>
+<li class="flex items-start gap-2"><span class="text-accent">—</span> Web Applications &amp; SPAs</li>
+<li class="flex items-start gap-2"><span class="text-accent">—</span> API Design &amp; Microservices</li>
+</ul>
+</div>
+<!-- AI Systems -->
+<div>
+<h3 class="text-2xl font-medium mb-4 flex items-center gap-2 text-white">
+ AI Systems
+        </h3>
+<p class="text-paper text-lg leading-relaxed mb-6 font-light">
+          Production AI workflows. Agentic systems and automation. Evaluation, privacy, and guardrails.
+        </p>
+<ul class="space-y-3 text-base text-muted font-medium">
+<li class="flex items-start gap-2"><span class="text-accent">—</span> Agentic Workflows</li>
+<li class="flex items-start gap-2"><span class="text-accent">—</span> RAG &amp; Data Pipelines</li>
+<li class="flex items-start gap-2"><span class="text-accent">—</span> LLM Evaluation &amp; Safety</li>
+</ul>
+</div>
+<!-- Cloud & DevOps -->
+<div>
+<h3 class="text-2xl font-medium mb-4 flex items-center gap-2 text-white">
+ Cloud &amp; DevOps
+        </h3>
+<p class="text-paper text-lg leading-relaxed mb-6 font-light">
+          AWS and Azure foundations. Infrastructure as code and delivery pipelines. Reliability, observability, and cost control.
+        </p>
+<ul class="space-y-3 text-base text-muted font-medium">
+<li class="flex items-start gap-2"><span class="text-accent">—</span> Cloud Architecture</li>
+<li class="flex items-start gap-2"><span class="text-accent">—</span> CI/CD &amp; Automation</li>
+<li class="flex items-start gap-2"><span class="text-accent">—</span> Observability &amp; Monitoring</li>
+</ul>
+</div>
+<!-- Technical Advisory -->
+<div>
+<h3 class="text-2xl font-medium mb-4 flex items-center gap-2 text-white">
+ Technical Advisory
+        </h3>
+<p class="text-paper text-lg leading-relaxed mb-6 font-light">
+          Architecture and technical due diligence. Delivery planning and team enablement. Pragmatic modernization.
+        </p>
+<ul class="space-y-3 text-base text-muted font-medium">
+<li class="flex items-start gap-2"><span class="text-accent">—</span> Architecture Reviews</li>
+<li class="flex items-start gap-2"><span class="text-accent">—</span> Technical Due Diligence</li>
+<li class="flex items-start gap-2"><span class="text-accent">—</span> Project Rescue &amp; Strategy</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Methodology Section -->
+<section class="mb-28" id="methodology">
+<div class="flex items-baseline gap-4 mb-12 border-b thin-rule pb-4">
+<h2 class="text-4xl font-semibold tracking-tight text-white">Working Model</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="border-l-2 border-accent pl-6 py-2"><div class="text-xl font-medium mb-4 text-white">Assess</div><p class="text-paper text-base leading-relaxed font-light">Analyze architecture, identify constraints, and strictly scope requirements before writing code.</p></div>
+<div class="border-l-2 border-accent/50 pl-6 py-2"><div class="text-xl font-medium mb-4 text-white">Build</div><p class="text-paper text-base leading-relaxed font-light">Execute engineering with rigorous testing, peer review, and continuous integration.</p></div>
+<div class="border-l-2 border-accent/20 pl-6 py-2"><div class="text-xl font-medium mb-4 text-white">Operate</div><p class="text-paper text-base leading-relaxed font-light">Deploy safely, monitor telemetry, and maintain long-term stability in production.</p></div>
+</div>
+</section>
+<!-- Work / Projects Section -->
+<section class="mb-28" id="work">
+<div class="flex items-baseline gap-4 mb-16 border-b thin-rule pb-4"><h2 class="text-4xl font-semibold tracking-tight text-white">Products</h2></div>
+<!-- Sidekick Feature -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24"><div class="lg:col-span-7"><div class="rounded-sm overflow-hidden border thin-rule" style="max-width: 512px;"><img alt="Sidekick — Focused Website Capture" class="w-full aspect-video object-cover block" style="max-width: 512px; width: 100%;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpgvyJ3SmKYyJaDRImQ84oE38K-FTxGtXz5VkMjpqmjaCctNc1yA5EO8nfWHFqE1zmSrbd1LoCrEH5GPQazAZ80tpAcZ1yoXR3duHYlhsCLHmWqz3K8qXk0k8wXaJQjL6ekTIyjrN-kAQE-DzBiY0q4OccjWmec48tH5IewpOBgDjzoxuK8LGAyeASxx5xvs1MbXgY8AKI-q-hcNFveWUfosTgeqqidAhfmamlP3aMKhIWuPMI1lyHt2-KwjYWEY-FVi8x11NDpy41"/></div></div><div class="lg:col-span-5 flex flex-col justify-center"><h3 class="text-3xl font-semibold mb-4 text-white">Sidekick</h3><p class="text-paper text-lg mb-8 leading-relaxed font-light">A proactive AI life coach that prompts you, not the other way around. Coaching, scheduling, and accountability — woven into one calm app.</p><div class="flex flex-wrap gap-6 text-base font-medium"><a class="text-[#3B82F6] hover:text-white flex items-center gap-2 transition-colors group" href="https://yoursidekick.ca">Visit Sidekick <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span></a><a class="text-[#FBBF24] hover:text-white flex items-center gap-2 transition-colors group" href="https://apps.apple.com/us/app/sidekick-ai/id6761344816">App Store <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span></a></div></div></div>
+<!-- Orden Feature -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"><div class="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1"><h3 class="text-3xl font-semibold mb-4 text-white">Orden</h3><p class="text-paper text-lg mb-8 leading-relaxed font-light">A peer-to-peer lending marketplace where borrowers and lenders meet, negotiate terms, and fund loans directly. Features an open loan ledger and real-time counter-offers.</p><div class="flex flex-wrap gap-6 text-base font-medium"><a class="text-[#10B981] hover:text-white flex items-center gap-2 transition-colors group" href="/demo/orden/">View Orden demo <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span></a></div></div><div class="lg:col-span-7 order-1 lg:order-2"><div class="rounded-sm overflow-hidden border thin-rule" style="max-width: 512px;"><img alt="Orden — Focused Website Capture" class="w-full aspect-video object-cover block" style="max-width: 512px; width: 100%;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHLVSYOaY760ADUElBWbQ2zBKsL5ibInTO0tCAuWJMtu_pB8AOeKSSaVkFFAml3OgG4x5ovFR6KiY3Bi_Yfl-tyLI7hEDzLXvy4EDXpYZJQKC8e1ewSRzamcGTslN76A6HukVaFMUXeKfBJYKv7ixuhTanW50JQlLzK8ZXtn_vAdvqXgU5xMUtHF0HwV2i8JHblkzUKVTs7DQppm6NcH5g7TWVBByDUIzahimWhSVbEnCo2G_rl2dTdEfV0q2CkXL8Ip_EqI7EgKqN"/></div></div></div>
+</section>
+<!-- About / The Studio -->
+<section class="mb-28 bg-surface-950 p-10 md:p-16 border thin-rule rounded-sm relative overflow-hidden" id="about">
+<div class="absolute top-0 left-0 w-1 h-full bg-accent"></div>
+<div class="max-w-4xl relative z-10">
+<h2 class="text-3xl font-semibold tracking-tight mb-6 text-white">The Studio</h2>
+<p class="text-paper text-2xl leading-relaxed font-light mb-8">
+        Techzad Inc. is a family-led technology studio—two brothers and our dad—operating out of Canada. We build software that respects the people who use it.
+      </p>
+<a class="inline-flex items-center gap-2 text-accent font-semibold hover:text-white transition-colors text-lg" href="mailto:hello@techzad.ca">
+        Reach out directly <span class="material-symbols-outlined text-[20px]">mail</span>
+</a>
+</div>
+</section>
+<!-- Footer -->
+<footer class="mt-auto border-t thin-rule pt-10 pb-10 flex flex-col md:flex-row justify-between items-center gap-6 text-base text-muted font-light">
+<div class="text-paper">
+      © 2026 Techzad Inc.
+    </div>
+<div class="flex flex-wrap items-center gap-8">
+<a class="hover:text-accent transition-colors text-paper" href="mailto:hello@techzad.ca">hello@techzad.ca</a>
+<span class="text-muted">Canada</span>
+</div>
+</footer>
+</body></html>

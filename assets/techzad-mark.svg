@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .ink { fill: #1a1d1e; }
+    .brass { fill: #c29a4d; }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #e8eaeb; }
+      .brass { fill: #e0bc7a; }
+    }
+  </style>
+  <path class="ink" d="M6 7h52v9H6z"/>
+  <path class="ink" d="M20 20h11v13L20 43z"/>
+  <path class="ink" d="M43 20h14L29 57H15z"/>
+  <path class="brass" d="M37 45h20v12H28z"/>
+</svg>

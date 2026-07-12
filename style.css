@@ -98,7 +98,18 @@ a { color: inherit; text-decoration: none; }
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-sm);
+}
+.brand-mark {
+  width: 34px;
+  height: 34px;
+}
+.brand:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 .wordmark {
   font-weight: 800;
@@ -413,6 +424,14 @@ a { color: inherit; text-decoration: none; }
   .services-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
+  .brand {
+    width: 34px;
+    height: 34px;
+  }
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+  }
   .nav-links { gap: 18px; }
   .nav-links a:not(.btn) { display: none; }
   .hero { padding: 64px 0 56px; }
