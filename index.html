@@ -3,180 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0E1112" />
+  <meta name="theme-color" content="#171a19" />
 
-  <title>Techzad Inc. — Software. AI. Advisory.</title>
-  <meta name="description" content="Techzad Inc. is a Canadian technology firm building mobile, web, and AI software — for our own products and for teams that care about craft." />
+  <title>Techzad — Software, AI, and Cloud Engineering</title>
+  <meta name="description" content="A Canadian technology studio building production software, AI systems, and reliable AWS and Azure infrastructure for startups and scaleups." />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Techzad Inc." />
-  <meta property="og:description" content="Mobile, web, AI. Built carefully." />
+  <meta property="og:title" content="Techzad" />
+  <meta property="og:description" content="Software, AI, and infrastructure—built carefully." />
   <meta property="og:url" content="https://techzad.ca" />
   <meta property="og:type" content="website" />
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Techzad Inc." />
-  <meta name="twitter:description" content="Mobile, web, AI. Built carefully." />
 
   <link rel="icon" href="assets/techzad-favicon.svg" type="image/svg+xml" />
-
-  <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-row">
-      <a href="/" class="brand" aria-label="Techzad home">
-        <img src="assets/techzad-mark.svg" alt="" class="brand-mark" />
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Techzad home">
+        <img class="brand-mark" src="assets/techzad-mark.svg" alt="" />
       </a>
-      <nav class="nav-links">
-        <a href="#services">Services</a>
+      <nav class="site-nav" aria-label="Primary navigation">
         <a href="#work">Work</a>
+        <a href="#capabilities">Capabilities</a>
         <a href="#about">About</a>
-        <a href="mailto:hello@techzad.ca" class="btn btn-ghost-sm">Contact</a>
+        <a class="button button-primary button-small" href="mailto:hello@techzad.ca">Contact</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="badge">Techzad Inc.</div>
-        <h1>
-          Software, AI,<br />
-          <span class="grad-text">built carefully.</span>
-        </h1>
-        <p class="hero-sub">
-          A small Canadian technology firm. We ship our own products and partner with teams that want the same patience and craft.
-        </p>
-        <div class="hero-trust">
-          <span>🇨🇦 Incorporated in Canada</span>
-          <span>·</span>
-          <span>Family-led</span>
-          <span>·</span>
-          <span>Privacy-first</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="services">
-      <div class="container">
-        <h2 class="section-title">What we do</h2>
-        <p class="section-sub">Three lanes. Same standard across all of them.</p>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/><rect x="3" y="5" width="18" height="14" rx="2" opacity="0.25"/></svg>
-            </div>
-            <h3>Mobile &amp; Web</h3>
-            <p>End-to-end product engineering across iOS, Android, and the web. Architecture, build, deploy, maintain — by the team that did it.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v3"/><path d="M12 19v3"/><path d="M5 12H2"/><path d="M22 12h-3"/><path d="M19.07 4.93l-2.12 2.12"/><path d="M7.05 16.95l-2.12 2.12"/><path d="M19.07 19.07l-2.12-2.12"/><path d="M7.05 7.05L4.93 4.93"/><circle cx="12" cy="12" r="4"/></svg>
-            </div>
-            <h3>AI Solutions</h3>
-            <p>From LLM features to production agentic systems. Privacy, evals, and guardrails baked in — not bolted on after launch.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
-            </div>
-            <h3>Advisory &amp; Consulting</h3>
-            <p>Architecture reviews, project rescues, and technical strategy. Plain language, written down, hands-on when you need it.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Work -->
-    <section id="work" class="work">
-      <div class="container">
-        <h2 class="section-title">Our work</h2>
-        <p class="section-sub">Products we own and ship. More in the pipeline.</p>
-
-        <div class="product-card">
-          <div class="product-icon">
-            <span class="product-mark">SK</span>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title">Software, AI,<br />built carefully.</h1>
+          <p>
+            A small Canadian technology studio. We architect, build, and operate production software and infrastructure for startups and scaleups that value rigor and craft.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:hello@techzad.ca?subject=Project%20inquiry">Start a conversation</a>
+            <a class="button button-secondary" href="#method">See how we work</a>
           </div>
-          <div class="product-body">
-            <div class="product-meta">
-              <span class="product-status">Live · v2.32</span>
-            </div>
+        </div>
+        <ul class="studio-facts" aria-label="About Techzad">
+          <li>Canada-based</li>
+          <li>Family-led</li>
+          <li>Ships its own products</li>
+          <li>Privacy-first</li>
+        </ul>
+      </section>
+
+      <section class="section" id="capabilities" aria-labelledby="capabilities-title">
+        <header class="section-header">
+          <h2 id="capabilities-title">Capabilities</h2>
+        </header>
+        <div class="capability-grid">
+          <article class="capability">
+            <h3>Product Engineering</h3>
+            <p>Mobile and web products, APIs and integrations, and the work required to stabilize and scale them.</p>
+            <ul>
+              <li>Native and cross-platform mobile</li>
+              <li>Web applications and platforms</li>
+              <li>APIs and system integrations</li>
+            </ul>
+          </article>
+
+          <article class="capability">
+            <h3>AI Systems</h3>
+            <p>Production AI workflows and agentic systems with privacy, evaluation, and guardrails built in.</p>
+            <ul>
+              <li>Agentic workflows and automation</li>
+              <li>RAG and data pipelines</li>
+              <li>Evaluation, privacy, and safety</li>
+            </ul>
+          </article>
+
+          <article class="capability">
+            <h3>Cloud &amp; DevOps</h3>
+            <p>AWS and Azure foundations, automated delivery, and reliable operations without unnecessary platform complexity.</p>
+            <ul>
+              <li>Architecture, migrations, and Terraform</li>
+              <li>CI/CD, containers, and Kubernetes</li>
+              <li>Observability, security, and cost control</li>
+            </ul>
+          </article>
+
+          <article class="capability">
+            <h3>Technical Advisory</h3>
+            <p>Senior technical judgment for architecture, delivery planning, modernization, and difficult projects.</p>
+            <ul>
+              <li>Architecture and due diligence</li>
+              <li>Delivery planning and team enablement</li>
+              <li>Project rescue and modernization</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="method" aria-labelledby="method-title">
+        <header class="section-header">
+          <h2 id="method-title">Working model</h2>
+        </header>
+        <div class="method-grid">
+          <article>
+            <h3>Assess</h3>
+            <p>Understand the architecture, constraints, and real scope before committing to a build.</p>
+          </article>
+          <article>
+            <h3>Build</h3>
+            <p>Ship in small increments with testing, review, and straightforward communication.</p>
+          </article>
+          <article>
+            <h3>Operate</h3>
+            <p>Deploy safely, observe production, and stay accountable after launch.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="work" aria-labelledby="work-title">
+        <header class="section-header">
+          <h2 id="work-title">Products</h2>
+        </header>
+
+        <article class="product product-sidekick">
+          <div class="product-media">
+            <img src="assets/products/sidekick.png" alt="Sidekick website showing its proactive AI life coach" width="1280" height="720" />
+          </div>
+          <div class="product-copy">
             <h3>Sidekick</h3>
-            <p>A proactive AI life coach that prompts you, not the other way around. Calendar, goals, energy, and rest — woven into one calm app.</p>
+            <p>A proactive AI life coach that prompts you, not the other way around. Coaching, scheduling, and accountability woven into one calm app.</p>
             <div class="product-links">
-              <a href="https://yoursidekick.ca" class="btn btn-link">Visit site →</a>
-              <a href="https://apps.apple.com/us/app/sidekick-ai/id6761344816" class="btn btn-link">App Store →</a>
+              <a href="https://yoursidekick.ca">Visit Sidekick <span aria-hidden="true">→</span></a>
+              <a href="https://apps.apple.com/us/app/sidekick-ai/id6761344816">App Store <span aria-hidden="true">→</span></a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="product-card">
-          <div class="product-icon">
-            <span class="product-mark">OR</span>
-          </div>
-          <div class="product-body">
-            <div class="product-meta">
-              <span class="product-status">Demo</span>
-            </div>
+        <article class="product product-orden">
+          <div class="product-copy">
             <h3>Orden</h3>
-            <p>A peer-to-peer lending marketplace where borrowers and lenders meet, negotiate terms, and fund loans directly — no bank in the middle.</p>
+            <p>A peer-to-peer lending marketplace where borrowers and lenders meet, negotiate terms, and fund loans directly. The public demo uses simulated data.</p>
             <div class="product-links">
-              <a href="/demo/orden/" class="btn btn-link">View demo →</a>
+              <a href="/demo/orden/">View Orden demo <span aria-hidden="true">→</span></a>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+          <div class="product-media">
+            <img src="assets/products/orden.png" alt="Orden website showing its open loan ledger" width="1280" height="720" />
+          </div>
+        </article>
+      </section>
 
-    <!-- About -->
-    <section id="about" class="about">
-      <div class="container about-inner">
-        <h2 class="section-title">About</h2>
-        <p>
-          Techzad Inc. is a Canadian technology firm building software that respects the people who use it. We don't sell attention, mine data, or chase metrics that aren't yours.
-        </p>
-        <p>
-          A family business — two brothers and our dad — building from Canada. We ship our own products and take on selective client work. Restraint is the design discipline; care is the standard.
-        </p>
-      </div>
-    </section>
+      <section class="studio" id="about" aria-labelledby="about-title">
+        <h2 id="about-title">The studio</h2>
+        <p>Techzad is a family-led technology studio—two brothers and our dad—operating from Canada. We build software that respects the people who use it and stay hands-on from architecture through operations.</p>
+        <a href="mailto:hello@techzad.ca">Reach out directly <span aria-hidden="true">→</span></a>
+      </section>
+    </main>
 
-    <!-- Contact CTA -->
-    <section id="contact" class="contact">
-      <div class="container contact-inner">
-        <h2>Have a project in mind?</h2>
-        <p>We're selective about who we work with — and we read every note.</p>
-        <a href="mailto:hello@techzad.ca?subject=Project%20inquiry" class="btn btn-primary">
-          hello@techzad.ca <span class="arrow">→</span>
-        </a>
+    <footer class="site-footer">
+      <span>© 2026 Techzad Inc.</span>
+      <div>
+        <a href="mailto:hello@techzad.ca">hello@techzad.ca</a>
+        <span>Canada</span>
       </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-row">
-      <div class="footer-brand">
-        <span class="wordmark">Techzad</span>
-        <span class="footer-meta">© 2026 Techzad Inc. · Made in Canada</span>
-      </div>
-      <nav class="footer-links">
-        <a href="#services">Services</a>
-        <a href="https://yoursidekick.ca">Sidekick</a>
-        <a href="mailto:hello@techzad.ca">Contact</a>
-      </nav>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>
