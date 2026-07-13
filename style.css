@@ -125,9 +125,11 @@ a:focus-visible {
 }
 
 .hero {
+  --hero-gap: clamp(56px, 8vw, 110px);
+  --hero-divider-offset: clamp(-55px, -4vw, -28px);
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
-  gap: clamp(56px, 8vw, 110px);
+  gap: var(--hero-gap);
   align-items: center;
   padding: clamp(80px, 12vw, 150px) 0;
 }
@@ -140,6 +142,14 @@ a:focus-visible {
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 0.98;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, #fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .hero-copy > p {
@@ -350,9 +360,19 @@ a:focus-visible {
 
 @media (min-width: 800px) {
   .studio-facts {
+    position: relative;
     padding-top: 0;
     border-top: 0;
-    border-left: 1px solid var(--rule);
+  }
+
+  .studio-facts::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--hero-divider-offset);
+    width: 1px;
+    background: var(--rule);
+    content: '';
   }
 }
 
