@@ -128,7 +128,7 @@ a:focus-visible {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
   gap: clamp(56px, 8vw, 110px);
-  align-items: end;
+  align-items: center;
   padding: clamp(80px, 12vw, 150px) 0;
 }
 
@@ -208,7 +208,6 @@ a:focus-visible {
 }
 
 .capability h3,
-.method-grid h3,
 .product h3 {
   margin: 0 0 14px;
   color: #fff;
@@ -218,7 +217,6 @@ a:focus-visible {
 }
 
 .capability p,
-.method-grid p,
 .product p {
   margin: 0;
   color: var(--paper);
@@ -240,33 +238,6 @@ a:focus-visible {
   margin-right: 10px;
   color: var(--accent);
   content: '—';
-}
-
-.method-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 42px;
-}
-
-.method-grid article {
-  padding-left: 24px;
-  border-left: 2px solid var(--accent);
-}
-
-.method-grid article:nth-child(2) {
-  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
-}
-
-.method-grid article:nth-child(3) {
-  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
-}
-
-.method-grid h3 {
-  font-size: 20px;
-}
-
-.method-grid p {
-  font-size: 16px;
 }
 
 .product {
@@ -399,7 +370,6 @@ a:focus-visible {
 
   .hero,
   .capability-grid,
-  .method-grid,
   .product,
   .product-orden {
     grid-template-columns: 1fr;
