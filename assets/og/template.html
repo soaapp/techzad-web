@@ -82,6 +82,8 @@
 
   .title.long { font-size: 58px; }
 
+  .title.xlong { font-size: 46px; -webkit-line-clamp: 5; }
+
   .foot {
     display: flex;
     justify-content: space-between;
@@ -117,7 +119,9 @@
   </div>
   <script>
     const t = document.getElementById("title");
-    if (t.textContent.length > 60) t.classList.add("long");
+    const len = t.textContent.length;
+    if (len > 110) t.classList.add("xlong");
+    else if (len > 60) t.classList.add("long");
   </script>
 </body>
 </html>
