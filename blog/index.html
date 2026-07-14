@@ -9,15 +9,21 @@ permalink: /blog/
     <h2 id="blog-title">Notes from the studio</h2>
   </header>
 
-  <ul class="post-list">
+  <div class="blog-grid">
     {% for post in site.posts %}
-    <li class="post-item">
-      <time class="post-item-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
-      <div class="post-item-copy">
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt | strip_html | strip_newlines | strip | truncate: 180 }}</p>
-      </div>
-    </li>
+    {% assign og_slug = post.url | split: '/' | last %}
+    <a class="blog-card" href="{{ post.url }}" style="--i: {{ forloop.index0 }}">
+      <span class="blog-card-media">
+        <img src="/assets/og/{{ og_slug }}.png" alt="" loading="lazy"
+             onerror="this.closest('.blog-card').classList.add('no-media')" />
+      </span>
+      <span class="blog-card-body">
+        <h3 class="blog-card-title">{{ post.title }}</h3>
+        <time class="blog-card-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        <p class="blog-card-excerpt">{{ post.excerpt | strip_html | strip_newlines | strip | truncate: 150 }}</p>
+        <span class="blog-card-cta">Read the note <span aria-hidden="true">→</span></span>
+      </span>
+    </a>
     {% endfor %}
-  </ul>
+  </div>
 </section>

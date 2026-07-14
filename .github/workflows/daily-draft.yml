@@ -123,7 +123,7 @@ jobs:
           DATE=$(TZ=America/Toronto date +%F)
           NICE_DATE=$(TZ=America/Toronto date +"%B %-d, %Y")
 
-          TITLE=$(grep -m1 '^title:' draft.md | sed 's/^title: *//; s/^"//; s/" *$//')
+          TITLE=$(grep -m1 '^title:' draft.md | sed 's/^title: *//; s/^"//; s/" *$//; s/\\"/"/g')
           SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]\{1,\}/-/g; s/^-//; s/-$//' | cut -c1-60)
           POST="_posts/${DATE}-${SLUG}.md"
           mv draft.md "$POST"
