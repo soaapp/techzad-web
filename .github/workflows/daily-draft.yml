@@ -160,5 +160,9 @@ jobs:
             --title "Morning draft: ${TITLE}" \
             --body-file pr-body.md \
             --base main \
-            --head "$BRANCH" \
-            --assignee "$REVIEWER"
+            --head "$BRANCH"
+
+          # Best-effort: don't fail the run if the reviewer hasn't accepted
+          # their collaborator invitation yet.
+          gh pr edit "$BRANCH" --add-assignee "$REVIEWER" \
+            || echo "::warning::Could not assign $REVIEWER (pending invitation?). PR created unassigned."
