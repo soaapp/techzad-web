@@ -14,7 +14,7 @@ permissions:
 
 env:
   # GitHub username who reviews and publishes the drafts (gets the 8am email).
-  REVIEWER: soaapp
+  REVIEWER: ajahanzad
 
 jobs:
   draft:
