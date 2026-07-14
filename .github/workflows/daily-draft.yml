@@ -152,6 +152,8 @@ jobs:
           **Not feeling this one?** Just press **Close pull request**. Nothing is published, and the topic returns to the queue for another day.
 
           After it is live, open the post and use the **Share on LinkedIn** button.
+
+          **Need to fix something after publishing?** You can edit the live post any time [right here](https://github.com/${{ github.repository }}/edit/main/${POST}) — commit directly to main and the site updates in a minute.
           EOF
 
           gh pr create \

@@ -59,7 +59,7 @@ try {
     const html = TEMPLATE
       .replace("{{TITLE}}", escapeHtml(title))
       .replace("{{DATE}}", escapeHtml(date));
-    await page.setContent(html, { waitUntil: "networkidle0" });
+    await page.setContent(html, { waitUntil: "domcontentloaded" });
     await page.evaluate(() => document.fonts.ready);
     const png = await page.screenshot({ type: "png" });
     writeFileSync(out, png);
