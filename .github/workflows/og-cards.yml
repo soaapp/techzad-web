@@ -1,0 +1,39 @@
+name: Social cards
+
+on:
+  push:
+    branches: [main]
+    paths: ["_posts/**"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install puppeteer-core
+        run: npm install --no-save --no-package-lock puppeteer-core
+
+      - name: Render missing cards
+        run: node .github/scripts/generate-og.mjs
+
+      - name: Commit new cards
+        run: |
+          if git diff --quiet && [ -z "$(git status --porcelain assets/og)" ]; then
+            echo "No new cards to commit."
+            exit 0
+          fi
+          git config user.name "techzad-draft-bot"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add assets/og/*.png
+          git commit -m "Add social cards for new posts"
+          git pull --rebase origin main
+          git push origin main
