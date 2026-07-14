@@ -1,0 +1,162 @@
+name: Daily blog draft
+
+on:
+  schedule:
+    # Two crons cover daylight saving: the gate step below only lets the
+    # run through when it is actually 8:00 AM in Toronto.
+    - cron: "0 12 * * *" # 8am EDT (summer)
+    - cron: "0 13 * * *" # 8am EST (winter)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  # GitHub username who reviews and publishes the drafts (gets the 8am email).
+  REVIEWER: soaapp
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Gate on 8am Toronto time
+        id: gate
+        run: |
+          HOUR=$(TZ=America/Toronto date +%H)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$HOUR" != "08" ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping: it is ${HOUR}:00 in Toronto, not 08:00 (DST duplicate run)."
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/checkout@v4
+
+      - name: Pick the next topic
+        if: steps.gate.outputs.run == 'true'
+        id: topic
+        run: |
+          TOPIC=$(grep -m1 '^- \[ \] ' .github/topics.md | sed 's/^- \[ \] //' || true)
+          if [ -n "$TOPIC" ]; then
+            echo "from_queue=true" >> "$GITHUB_OUTPUT"
+          else
+            TOPIC="(The queue is empty. Choose a fresh topic yourself: something a senior technology leader at a small Canadian studio would write about, distinct from the recent posts listed.)"
+            echo "from_queue=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "topic=$TOPIC" >> "$GITHUB_OUTPUT"
+          echo "Topic: $TOPIC"
+
+      - name: Generate the draft with Claude
+        if: steps.gate.outputs.run == 'true'
+        id: generate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TOPIC: ${{ steps.topic.outputs.topic }}
+        run: |
+          set -euo pipefail
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::ANTHROPIC_API_KEY secret is not set. Add it in repo Settings → Secrets → Actions."
+            exit 1
+          fi
+
+          SYSTEM=$(cat .github/voice-profile.md)
+          RECENT=$(grep -h '^title:' _posts/*.md | sed 's/^title: *//; s/^"//; s/"$//' | tail -6)
+
+          PROMPT=$(cat <<EOF
+          Write today's post for the Techzad studio blog ("Notes from the studio").
+
+          Topic: ${TOPIC}
+
+          Recent posts (do not repeat their topics, openings, or closing lines):
+          ${RECENT}
+
+          Output ONLY the complete Jekyll markdown file: YAML front matter first
+          (title and author: Ali), then the body. No code fences, no commentary
+          before or after the file content.
+          EOF
+          )
+
+          jq -n --arg system "$SYSTEM" --arg prompt "$PROMPT" '{
+            model: "claude-opus-4-8",
+            max_tokens: 4000,
+            thinking: {type: "adaptive"},
+            system: $system,
+            messages: [{role: "user", content: $prompt}]
+          }' > payload.json
+
+          curl -sS --fail-with-body https://api.anthropic.com/v1/messages \
+            -H "x-api-key: ${ANTHROPIC_API_KEY}" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "content-type: application/json" \
+            -d @payload.json > response.json
+
+          STOP=$(jq -r '.stop_reason' response.json)
+          if [ "$STOP" = "refusal" ]; then
+            echo "::error::Claude declined this topic. Check .github/topics.md."
+            exit 1
+          fi
+
+          jq -r '[.content[] | select(.type == "text") | .text] | join("")' response.json > draft.md
+
+          # Strip accidental code fences and enforce the no-em-dash rule.
+          sed -i '/^```/d' draft.md
+          sed -i 's/ *— */, /g; s/—/, /g' draft.md
+          # Trim leading blank lines so the file starts at the front matter.
+          sed -i '/./,$!d' draft.md
+
+          if [ "$(head -c 3 draft.md)" != "---" ]; then
+            echo "::error::Draft did not start with YAML front matter:"
+            head -5 draft.md
+            exit 1
+          fi
+
+      - name: Commit draft and open the PR
+        if: steps.gate.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FROM_QUEUE: ${{ steps.topic.outputs.from_queue }}
+        run: |
+          set -euo pipefail
+          DATE=$(TZ=America/Toronto date +%F)
+          NICE_DATE=$(TZ=America/Toronto date +"%B %-d, %Y")
+
+          TITLE=$(grep -m1 '^title:' draft.md | sed 's/^title: *//; s/^"//; s/" *$//')
+          SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]\{1,\}/-/g; s/^-//; s/-$//' | cut -c1-60)
+          POST="_posts/${DATE}-${SLUG}.md"
+          mv draft.md "$POST"
+
+          if [ "$FROM_QUEUE" = "true" ]; then
+            sed -i '0,/^- \[ \] /s//- [x] /' .github/topics.md
+          fi
+
+          BRANCH="draft/${DATE}-${{ github.run_number }}"
+          git config user.name "techzad-draft-bot"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add "$POST" .github/topics.md
+          git commit -m "Morning draft: ${TITLE}"
+          git push origin "$BRANCH"
+
+          cat > pr-body.md <<EOF
+          Good morning! Here is today's draft, written ${NICE_DATE}.
+
+          **How to publish it:**
+          1. Open the **Files changed** tab to read the post.
+          2. Click the **pencil icon** on the post file to edit: fix anything, add your stories, make it yours.
+          3. Commit your changes (button at the top right of the editor).
+          4. Come back here and press **Merge pull request**. The post goes live at techzad.ca/blog a minute later.
+
+          **Not feeling this one?** Just press **Close pull request**. Nothing is published, and the topic returns to the queue for another day.
+
+          After it is live, open the post and use the **Share on LinkedIn** button.
+          EOF
+
+          gh pr create \
+            --title "Morning draft: ${TITLE}" \
+            --body-file pr-body.md \
+            --base main \
+            --head "$BRANCH" \
+            --assignee "$REVIEWER"
