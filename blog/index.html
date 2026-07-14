@@ -1,0 +1,23 @@
+---
+layout: default
+title: Blog
+description: Notes from the Techzad studio — on software, AI, infrastructure, and building carefully.
+permalink: /blog/
+---
+<section class="section blog-index" aria-labelledby="blog-title">
+  <header class="section-header">
+    <h2 id="blog-title">Notes from the studio</h2>
+  </header>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+    <li class="post-item">
+      <time class="post-item-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+      <div class="post-item-copy">
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt | strip_html | strip_newlines | strip | truncate: 180 }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

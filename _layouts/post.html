@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>{% if page.author %} · {{ page.author }}{% endif %}
+    </p>
+    <h1>{{ page.title }}</h1>
+  </header>
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-share">
+      <a class="button button-primary button-small" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener">Share on LinkedIn</a>
+      <a class="post-edit" href="https://github.com/soaapp/techzad-web/edit/main/{{ page.path }}" target="_blank" rel="noopener">Edit this post</a>
+    </div>
+    <a class="post-back" href="/blog/">← All posts</a>
+  </footer>
+</article>

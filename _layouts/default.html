@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#171a19" />
+
+  <title>{% if page.title %}{{ page.title }} — Techzad{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | strip | truncate: 160 }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Techzad{% endif %}" />
+  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | strip | truncate: 160 }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
+  <meta property="og:site_name" content="Techzad" />
+  {% if page.date %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />{% endif %}
+  {% if page.image %}<meta property="og:image" content="{{ page.image | absolute_url }}" />
+  <meta name="twitter:card" content="summary_large_image" />{% else %}<meta name="twitter:card" content="summary" />{% endif %}
+
+  <link rel="icon" href="/assets/techzad-favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Techzad home">
+        <img class="brand-mark" src="/assets/techzad-mark.svg" alt="" />
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="/#work">Work</a>
+        <a href="/#capabilities">Capabilities</a>
+        <a href="/blog/">Blog</a>
+        <a class="button button-primary button-small" href="mailto:hello@techzad.ca">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Techzad Inc.</span>
+      <div>
+        <a href="mailto:hello@techzad.ca">hello@techzad.ca</a>
+        <span>Canada</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+title: Techzad
+description: A Canadian technology studio building production software, AI systems, and reliable cloud infrastructure.
+url: "https://techzad.ca"
+timezone: America/Toronto
+
+markdown: kramdown
+permalink: /blog/:title/
+
+exclude:
+  - README.md
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
