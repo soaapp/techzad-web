@@ -250,33 +250,41 @@ a:focus-visible {
   content: '—';
 }
 
-.product {
+.product-grid {
   display: grid;
-  grid-template-columns: minmax(0, 512px) minmax(260px, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(44px, 7vw, 88px);
+}
+
+.product {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+
+.product-logo {
+  display: flex;
+  width: 88px;
+  height: 88px;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
-.product + .product {
-  margin-top: 96px;
-}
-
-.product-orden {
-  grid-template-columns: minmax(260px, 1fr) minmax(0, 512px);
-}
-
-.product-media {
-  overflow: hidden;
-  max-width: 512px;
-  border: 1px solid var(--rule);
-  background: var(--surface);
-}
-
-.product-media img {
-  width: 100%;
+.product-logo img {
+  width: auto;
   height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  max-height: 100%;
+  border-radius: 14px;
+  object-fit: contain;
+}
+
+.product-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .product h3 {
@@ -288,7 +296,8 @@ a:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  margin-top: 26px;
+  margin-top: auto;
+  padding-top: 26px;
   font-weight: 500;
 }
 
@@ -696,8 +705,7 @@ a:focus-visible {
 
   .hero,
   .capability-grid,
-  .product,
-  .product-orden {
+  .product-grid {
     grid-template-columns: 1fr;
   }
 
@@ -710,16 +718,8 @@ a:focus-visible {
     padding-left: 30px;
   }
 
-  .product-orden .product-copy {
-    order: 2;
-  }
-
-  .product-orden .product-media {
-    order: 1;
-  }
-
-  .product-media {
-    width: 100%;
+  .product-grid {
+    gap: 64px;
   }
 }
 
