@@ -31,13 +31,16 @@
       <a class="brand" href="/" aria-label="Techzad home">
         <img class="brand-mark" src="/assets/techzad-mark.svg" alt="" />
       </a>
-      <nav class="site-nav" aria-label="Primary navigation">
+      <nav class="site-nav" id="site-menu" aria-label="Primary navigation">
         <a href="/#work">Work</a>
         <a href="/#capabilities">Capabilities</a>
         <a href="/#about">About</a>
         <a href="/blog/">Blog</a>
         <a class="button button-primary button-small" href="mailto:hello@techzad.ca">Contact</a>
       </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </header>
 
     <main>
@@ -52,5 +55,22 @@
       </div>
     </footer>
   </div>
+  <script>
+    (function () {
+      var toggle = document.querySelector(".nav-toggle");
+      var menu = document.getElementById("site-menu");
+      if (!toggle || !menu) return;
+      toggle.addEventListener("click", function () {
+        var open = menu.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      menu.addEventListener("click", function (e) {
+        if (e.target.closest("a")) {
+          menu.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
