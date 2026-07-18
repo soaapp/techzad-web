@@ -20,13 +20,21 @@ jobs:
   draft:
     runs-on: ubuntu-latest
     steps:
-      - name: Gate on 8am Toronto time
+      - name: Skip if today's draft already exists
         id: gate
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          HOUR=$(TZ=America/Toronto date +%H)
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "$HOUR" != "08" ]; then
+          # GitHub's scheduler can fire cron jobs an hour or more late, so we
+          # never check the clock. Instead: the two DST crons may both attempt;
+          # whichever runs first creates today's draft, and any later attempt
+          # sees a draft branch for today's date and skips.
+          DATE=$(TZ=America/Toronto date +%F)
+          EXISTING=$(gh pr list -R "${{ github.repository }}" --state all --limit 50 \
+            --json headRefName --jq "[.[] | select(.headRefName | startswith(\"draft/${DATE}\"))] | length")
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$EXISTING" -gt 0 ]; then
             echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping: it is ${HOUR}:00 in Toronto, not 08:00 (DST duplicate run)."
+            echo "Skipping: a draft for ${DATE} already exists (duplicate scheduled run)."
           else
             echo "run=true" >> "$GITHUB_OUTPUT"
           fi
