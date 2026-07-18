@@ -1,11 +1,11 @@
-name: Blog draft (Mon & Fri)
+name: Blog draft (Mondays)
 
 on:
   schedule:
-    # Mondays and Fridays only. Two crons cover daylight saving: the gate
-    # step below only lets the run through when it is actually 8:00 AM in Toronto.
-    - cron: "0 12 * * 1,5" # 8am EDT (summer), Mon & Fri
-    - cron: "0 13 * * 1,5" # 8am EST (winter), Mon & Fri
+    # Mondays only. Two crons cover daylight saving; GitHub may fire either
+    # one late, so the gate step dedupes by date instead of checking the clock.
+    - cron: "0 12 * * 1" # 8am EDT (summer), Mondays
+    - cron: "0 13 * * 1" # 8am EST (winter), Mondays
   workflow_dispatch: {}
 
 permissions:
