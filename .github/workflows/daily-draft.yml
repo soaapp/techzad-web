@@ -131,7 +131,11 @@ jobs:
           DATE=$(TZ=America/Toronto date +%F)
           NICE_DATE=$(TZ=America/Toronto date +"%B %-d, %Y")
 
-          TITLE=$(grep -m1 '^title:' draft.md | sed 's/^title: *//; s/^"//; s/" *$//; s/\\"/"/g')
+          TITLE=$(python3 -c "
+          import yaml
+          front_matter = open('draft.md').read().split('---', 2)[1]
+          print(yaml.safe_load(front_matter)['title'])
+          ")
           SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]\{1,\}/-/g; s/^-//; s/-$//' | cut -c1-60)
           POST="_posts/${DATE}-${SLUG}.md"
           mv draft.md "$POST"
