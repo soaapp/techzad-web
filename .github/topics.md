@@ -5,7 +5,7 @@ topic, writes a post in Ali's voice, and opens a PR. Checked topics have been
 used. Add new ideas anywhere in the list; blank lines and comments are ignored
 
 
-- [ ] The hidden cost of "we'll divest this venture later" when the hole is deeper
+- [x] The hidden cost of "we'll divest this venture later" when the hole is deeper
 - [ ] Why the best requirement documents are written after talking to the people who do the work
 - [ ] What restaurants taught me about real-time systems
 - [ ] AI will not replace your team, but it will change what "junior" means
