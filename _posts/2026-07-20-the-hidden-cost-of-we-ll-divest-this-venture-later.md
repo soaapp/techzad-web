@@ -2,6 +2,7 @@
 title: The Hidden Cost of "We'll Divest This Venture Later"
 author: Ali
 ---
+<img width="2400" height="1260" alt="image" src="https://github.com/user-attachments/assets/cff39591-bc65-4e5c-9c6c-e96fd923f7a1" />
 
 Most struggling ventures are not killed by a single bad quarter. They are kept alive by a sentence that sounds responsible: "We will divest this later, once conditions improve." The intention is sound. The arithmetic rarely is. In practice, the wait that feels prudent is often the most expensive decision on the table.
 
