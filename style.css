@@ -35,6 +35,10 @@ body {
 img {
   display: block;
   max-width: 100%;
+  /* GitHub's editor inserts <img width="..." height="..."> when you upload an
+     image. Without this, max-width shrinks the width while the height
+     attribute is honoured, stretching the picture. */
+  height: auto;
 }
 
 a {
