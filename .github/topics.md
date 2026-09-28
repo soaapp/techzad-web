@@ -8,7 +8,7 @@ used. Add new ideas anywhere in the list; blank lines and comments are ignored
 - [x] The hidden cost of "we'll divest this venture later" when the hole is deeper
 - [x] What restaurants taught me about real-time systems
 - [x] AI will not replace your team, but it will change what "junior" means
-- [ ] The art of the honest status update
+- [x] The art of the honest status update
 - [ ] Why every migration plan needs a rollback story
 - [ ] Training people on software: why patience beats documentation
 - [ ] The difference between a demo and a product
