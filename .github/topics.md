@@ -10,7 +10,7 @@ used. Add new ideas anywhere in the list; blank lines and comments are ignored
 - [x] AI will not replace your team, but it will change what "junior" means
 - [x] The art of the honest status update
 - [x] Why every migration plan needs a rollback story
-- [ ] Training people on software: why patience beats documentation
+- [x] Training people on software: why patience beats documentation
 - [ ] The difference between a demo and a product
 - [ ] Why I never trust a demo that goes perfectly
 - [ ] The most expensive phrase in software: "while we're at it"
