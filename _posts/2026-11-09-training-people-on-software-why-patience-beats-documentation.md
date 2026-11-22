@@ -3,9 +3,9 @@ title: "Training people on software: why patience beats documentation, and where
 author: Ali
 ---
 
-A new employee sits in front of a scheduling tool on her first morning. She has read the twelve-page onboarding guide. She still does not press the first button, because she is afraid of breaking something she does not yet understand. The document was complete. The person was not ready.
+A new employee sits in front of a scheduling tool on her first morning. She has read the twelve-page onboarding guide. She still does not press the first button, because she is afraid of breaking something she does not yet understand. The document was complete. The person was not ready. Same with training employees with new software.
 
-I have watched this scene play out in warehouses, clinics, and restaurants for years. The pattern is consistent, and it tells us something uncomfortable about how we train people on the systems we build.
+I have watched this scene play out in banks, clinics, and restaurants for years. The pattern is consistent, and it tells us something uncomfortable about how we train people on the systems we build.
 
 ## Documentation answers questions nobody asked yet
 
