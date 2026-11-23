@@ -11,7 +11,7 @@ used. Add new ideas anywhere in the list; blank lines and comments are ignored
 - [x] The art of the honest status update
 - [x] Why every migration plan needs a rollback story
 - [x] Training people on software: why patience beats documentation: What’s the role of AI
-- [ ] The difference between a demo and a product
+- [x] The difference between a demo and a product
 - [ ] Why I never trust a demo that goes perfectly
 - [ ] The most expensive phrase in software: "while we're at it"
 - [ ] What a busy Friday service teaches you about load testing
